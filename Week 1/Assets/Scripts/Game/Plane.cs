@@ -4,13 +4,190 @@ using UnityEngine;
 
 public class Plane : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private Vector3 velocityU = new Vector3(0, 0);
+    private Vector3 velocityD = new Vector3(0, 0);
+    private Vector3 velocityL = new Vector3(0, 0);
+    private Vector3 velocityR = new Vector3(0, 0);
+    private bool hitBorderU = false;
+    private bool hitBorderD = false;
+    private bool hitBorderL = false;
+    private bool hitBorderR = false;
+
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            velocityL -= new Vector3((float)0.1, 0) * Time.deltaTime;
+            if (!hitBorderL)
+            {
+                this.transform.position += velocityL;
+            }
+        }
+        else
+        {
+            if (velocityL.x > 0)
+            {
+                velocityL = Vector3.zero;
+            }
+            if (velocityL != Vector3.zero)
+            {
+                velocityL += new Vector3((float)0.1, 0) * Time.deltaTime;
+                if (!hitBorderL)
+                {
+                    this.transform.position += velocityL;
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            velocityR += new Vector3((float)0.1, 0) * Time.deltaTime;
+            if (!hitBorderR)
+            {
+                this.transform.position += velocityR;
+            }
+        }
+        else
+        {
+            if (velocityR.x < 0)
+            {
+                velocityR = Vector3.zero;
+            }
+            if (velocityR != Vector3.zero)
+            {
+                velocityR -= new Vector3((float)0.1, 0) * Time.deltaTime;
+                if (!hitBorderR)
+                {
+                    this.transform.position += velocityR;
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            velocityD -= new Vector3(0, (float)0.1) * Time.deltaTime;
+            if (!hitBorderD)
+            {
+                this.transform.position += velocityD;
+            }
+        }
+        else
+        {
+            if (velocityD.y > 0)
+            {
+                velocityD = Vector3.zero;
+            }
+            if (velocityD != Vector3.zero)
+            {
+                velocityD += new Vector3(0, (float)0.1) * Time.deltaTime;
+                if (!hitBorderD)
+                {
+                    this.transform.position += velocityD;
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            velocityU += new Vector3(0, (float)0.1) * Time.deltaTime;
+            if (!hitBorderU)
+            {
+                this.transform.position += velocityU;
+            }
+        }
+        else
+        {
+            if (velocityU.y < 0)
+            {
+                velocityU = Vector3.zero;
+            }
+            if (velocityU != Vector3.zero)
+            {
+                velocityU -= new Vector3(0, (float)0.1) * Time.deltaTime;
+                if (!hitBorderU)
+                {
+                    this.transform.position += velocityU;
+                }
+            }
+        }
+
+        
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "BorderLeft")
+        {
+            Debug.Log(col.gameObject.tag);
+            hitBorderL = true;
+        }
+
+        if (col.gameObject.tag == "BorderRight")
+        {
+            hitBorderR = true;
+        }
+
+        if (col.gameObject.tag == "BorderUp")
+        {
+            hitBorderU = true;
+        }
+
+        if (col.gameObject.tag == "BorderDown")
+        {
+            hitBorderD = true;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "BorderLeft")
+        {
+
+        }
+
+        if (col.gameObject.tag == "BorderRight")
+        {
+
+        }
+
+        if (col.gameObject.tag == "BorderUp")
+        {
+
+        }
+
+        if (col.gameObject.tag == "BorderDown")
+        {
+
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "BorderLeft")
+        {
+            Debug.Log(col.gameObject.tag);
+            hitBorderL = false;
+        }
+
+        if (col.gameObject.tag == "BorderRight")
+        {
+            hitBorderR = false;
+        }
+
+        if (col.gameObject.tag == "BorderUp")
+        {
+            hitBorderU = false;
+        }
+
+        if (col.gameObject.tag == "BorderDown")
+        {
+            hitBorderD = false;
+        }
+    }
 }
