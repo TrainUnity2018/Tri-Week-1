@@ -13,10 +13,9 @@ public class Plane : MonoBehaviour {
     private bool hitBorderL = false;
     private bool hitBorderR = false;
 
-
     // Use this for initialization
     void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
@@ -168,6 +167,58 @@ public class Plane : MonoBehaviour {
     }
 
     void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "BorderLeft")
+        {
+            Debug.Log(col.gameObject.tag);
+            hitBorderL = false;
+        }
+
+        if (col.gameObject.tag == "BorderRight")
+        {
+            hitBorderR = false;
+        }
+
+        if (col.gameObject.tag == "BorderUp")
+        {
+            hitBorderU = false;
+        }
+
+        if (col.gameObject.tag == "BorderDown")
+        {
+            hitBorderD = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "BorderLeft")
+        {
+            velocityL = Vector3.zero;
+            Debug.Log(col.gameObject.tag);
+            hitBorderL = true;
+        }
+
+        if (col.gameObject.tag == "BorderRight")
+        {
+            velocityR = Vector3.zero;
+            hitBorderR = true;
+        }
+
+        if (col.gameObject.tag == "BorderUp")
+        {
+            velocityU = Vector3.zero;
+            hitBorderU = true;
+        }
+
+        if (col.gameObject.tag == "BorderDown")
+        {
+            velocityD = Vector3.zero;
+            hitBorderD = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col) 
     {
         if (col.gameObject.tag == "BorderLeft")
         {
