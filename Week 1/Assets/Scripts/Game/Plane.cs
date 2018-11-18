@@ -12,6 +12,7 @@ public class Plane : MonoBehaviour {
     private bool hitBorderD = false;
     private bool hitBorderL = false;
     private bool hitBorderR = false;
+    private ColliderDistance2D coldist;
 
     // Use this for initialization
     void Start () {
@@ -27,6 +28,7 @@ public class Plane : MonoBehaviour {
             {
                 this.transform.position += velocityL;
             }
+            //this.transform.position += velocityL;
         }
         else
         {
@@ -41,6 +43,7 @@ public class Plane : MonoBehaviour {
                 {
                     this.transform.position += velocityL;
                 }
+                //this.transform.position += velocityL;
             }
         }
 
@@ -51,6 +54,7 @@ public class Plane : MonoBehaviour {
             {
                 this.transform.position += velocityR;
             }
+            //this.transform.position += velocityR;
         }
         else
         {
@@ -65,6 +69,7 @@ public class Plane : MonoBehaviour {
                 {
                     this.transform.position += velocityR;
                 }
+                //this.transform.position += velocityR;
             }
         }
 
@@ -116,103 +121,110 @@ public class Plane : MonoBehaviour {
             }
         }
 
-        
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "BorderLeft")
-        {
-            Debug.Log(col.gameObject.tag);
-            hitBorderL = true;
-        }
+    //void OnCollisionEnter2D(Collision2D col)
+    //{
+    //    if (col.gameObject.tag == "BorderLeft")
+    //    {
+            
+    //        Debug.Log(col.gameObject.tag);
+    //        hitBorderL = true;
+    //    }
 
-        if (col.gameObject.tag == "BorderRight")
-        {
-            hitBorderR = true;
-        }
+    //    if (col.gameObject.tag == "BorderRight")
+    //    {
+    //        hitBorderR = true;
+    //    }
 
-        if (col.gameObject.tag == "BorderUp")
-        {
-            hitBorderU = true;
-        }
+    //    if (col.gameObject.tag == "BorderUp")
+    //    {
+    //        hitBorderU = true;
+    //    }
 
-        if (col.gameObject.tag == "BorderDown")
-        {
-            hitBorderD = true;
-        }
-    }
+    //    if (col.gameObject.tag == "BorderDown")
+    //    {
+    //        hitBorderD = true;
+    //    }
+    //}
 
-    void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "BorderLeft")
-        {
+    //void OnCollisionStay2D(Collision2D col)
+    //{
+    //    if (col.gameObject.tag == "BorderLeft")
+    //    {
 
-        }
+    //    }
 
-        if (col.gameObject.tag == "BorderRight")
-        {
+    //    if (col.gameObject.tag == "BorderRight")
+    //    {
 
-        }
+    //    }
 
-        if (col.gameObject.tag == "BorderUp")
-        {
+    //    if (col.gameObject.tag == "BorderUp")
+    //    {
 
-        }
+    //    }
 
-        if (col.gameObject.tag == "BorderDown")
-        {
+    //    if (col.gameObject.tag == "BorderDown")
+    //    {
 
-        }
-    }
+    //    }
+    //}
 
-    void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "BorderLeft")
-        {
-            Debug.Log(col.gameObject.tag);
-            hitBorderL = false;
-        }
+    //void OnCollisionExit2D(Collision2D col)
+    //{
+    //    if (col.gameObject.tag == "BorderLeft")
+    //    {
+    //        Debug.Log(col.gameObject.tag);
+    //        hitBorderL = false;
+    //    }
 
-        if (col.gameObject.tag == "BorderRight")
-        {
-            hitBorderR = false;
-        }
+    //    if (col.gameObject.tag == "BorderRight")
+    //    {
+    //        hitBorderR = false;
+    //    }
 
-        if (col.gameObject.tag == "BorderUp")
-        {
-            hitBorderU = false;
-        }
+    //    if (col.gameObject.tag == "BorderUp")
+    //    {
+    //        hitBorderU = false;
+    //    }
 
-        if (col.gameObject.tag == "BorderDown")
-        {
-            hitBorderD = false;
-        }
-    }
+    //    if (col.gameObject.tag == "BorderDown")
+    //    {
+    //        hitBorderD = false;
+    //    }
+    //}
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "BorderLeft")
+        if (col.gameObject.tag == "BorderLeft" && !hitBorderL)
         {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position -= new Vector3((float)(coldist.distance), 0);
             velocityL = Vector3.zero;
-            Debug.Log(col.gameObject.tag);
             hitBorderL = true;
         }
 
         if (col.gameObject.tag == "BorderRight")
         {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position += new Vector3((float)(coldist.distance), 0);
             velocityR = Vector3.zero;
             hitBorderR = true;
         }
 
         if (col.gameObject.tag == "BorderUp")
         {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position += new Vector3(0, (float)(coldist.distance));
             velocityU = Vector3.zero;
             hitBorderU = true;
         }
 
         if (col.gameObject.tag == "BorderDown")
         {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position -= new Vector3(0, (float)(coldist.distance));
             velocityD = Vector3.zero;
             hitBorderD = true;
         }
@@ -222,7 +234,6 @@ public class Plane : MonoBehaviour {
     {
         if (col.gameObject.tag == "BorderLeft")
         {
-            Debug.Log(col.gameObject.tag);
             hitBorderL = false;
         }
 
