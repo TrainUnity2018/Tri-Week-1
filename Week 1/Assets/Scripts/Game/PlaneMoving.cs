@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plane : MonoBehaviour {
+public class PlaneMoving : MonoBehaviour {
 
     private Vector3 velocityU = new Vector3(0, 0);
     private Vector3 velocityD = new Vector3(0, 0);
@@ -28,7 +28,6 @@ public class Plane : MonoBehaviour {
             {
                 this.transform.position += velocityL;
             }
-            //this.transform.position += velocityL;
         }
         else
         {
@@ -43,7 +42,6 @@ public class Plane : MonoBehaviour {
                 {
                     this.transform.position += velocityL;
                 }
-                //this.transform.position += velocityL;
             }
         }
 
@@ -54,7 +52,6 @@ public class Plane : MonoBehaviour {
             {
                 this.transform.position += velocityR;
             }
-            //this.transform.position += velocityR;
         }
         else
         {
@@ -69,7 +66,6 @@ public class Plane : MonoBehaviour {
                 {
                     this.transform.position += velocityR;
                 }
-                //this.transform.position += velocityR;
             }
         }
 

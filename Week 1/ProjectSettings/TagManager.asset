@@ -8,6 +8,7 @@ TagManager:
   - BorderRight
   - BorderUp
   - BorderDown
+  - PlaneBullet
   layers:
   - Default
   - TransparentFX
