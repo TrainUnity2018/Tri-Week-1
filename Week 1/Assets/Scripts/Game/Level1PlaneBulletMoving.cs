@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneBulletMoving : MonoBehaviour {
+public class Level1PlaneBulletMoving : MonoBehaviour {
 
     private float speed = 0.05f;
     

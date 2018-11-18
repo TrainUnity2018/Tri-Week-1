@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneShooting : MonoBehaviour {
+public class Level1PlaneShooting : MonoBehaviour {
 
     public Transform firePosition;
     public GameObject bulletPrefab;

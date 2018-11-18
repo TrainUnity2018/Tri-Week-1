@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58732307234727658}
   - component: {fileID: 114323938833843286}
   m_Layer: 0
-  m_Name: PlaneBullet
+  m_Name: Level1PlaneBullet
   m_TagString: PlaneBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
