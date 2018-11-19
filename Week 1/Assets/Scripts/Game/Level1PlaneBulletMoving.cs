@@ -22,5 +22,10 @@ public class Level1PlaneBulletMoving : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+        if (col.gameObject.tag == "EnemyPlane")
+        {
+            Destroy(this.gameObject);
+            Destroy(col.gameObject);
+        }
     }
 }

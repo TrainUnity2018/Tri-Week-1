@@ -224,6 +224,11 @@ public class PlaneMoving : MonoBehaviour {
             velocityD = Vector3.zero;
             hitBorderD = true;
         }
+
+        if (col.gameObject.tag == "EnemyPlane")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D col) 

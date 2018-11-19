@@ -9,6 +9,8 @@ TagManager:
   - BorderUp
   - BorderDown
   - PlaneBullet
+  - Bottom
+  - EnemyPlane
   layers:
   - Default
   - TransparentFX

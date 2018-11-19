@@ -7,8 +7,7 @@ public class Level3PlaneBulletMoving2 : MonoBehaviour {
     private float speed = 0.05f;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start () {
 
     }
 
@@ -24,5 +23,11 @@ public class Level3PlaneBulletMoving2 : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+        if (col.gameObject.tag == "EnemyPlane")
+        {
+            Destroy(this.gameObject);
+            Destroy(col.gameObject);
+        }
     }
+
 }
