@@ -12,7 +12,9 @@ public class PlaneMoving : MonoBehaviour {
     private bool hitBorderD = false;
     private bool hitBorderL = false;
     private bool hitBorderR = false;
+    public int health = 5;
     private ColliderDistance2D coldist;
+    private int bulletLevel = 1;
 
     // Use this for initialization
     void Start () {
@@ -227,7 +229,29 @@ public class PlaneMoving : MonoBehaviour {
 
         if (col.gameObject.tag == "EnemyPlane")
         {
-            Destroy(this.gameObject);
+            health -= 1;
+            Destroy(col.gameObject);
+            if (health == 0)
+            {
+                Destroy(this.gameObject);
+            }
+            Debug.Log(health);
+        }
+
+        if (col.gameObject.tag == "Upgrade")
+        {
+            bulletLevel++;
+            if (bulletLevel == 2)
+            {
+                this.gameObject.GetComponent<Level1PlaneShooting>().enabled = false;
+                this.gameObject.GetComponent<Level2PlaneShooting>().enabled = true;
+            }
+            else if (bulletLevel == 3)
+            {
+                this.gameObject.GetComponent<Level2PlaneShooting>().enabled = false;
+                this.gameObject.GetComponent<Level3PlaneShooting>().enabled = true;
+            }
+            Destroy(col.gameObject);
         }
     }
 

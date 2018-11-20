@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPlaneMoving : MonoBehaviour {
 
     private float speed = 0.01f;
+    public GameObject upgradeDrop;
 
     // Use this for initialization
     void Start () {
@@ -22,5 +23,10 @@ public class EnemyPlaneMoving : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void OnDestroy()
+    {
+            Instantiate(upgradeDrop, this.transform.position, Quaternion.identity);
     }
 }

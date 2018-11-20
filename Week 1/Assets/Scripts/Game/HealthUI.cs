@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class HealthUI : MonoBehaviour {
+
+    public Image healthUI;
+    public GameObject player;
+    private PlaneMoving planeMoving;
+    private int health;
+
+    // Use this for initialization
+    void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
+        planeMoving = player.GetComponent<PlaneMoving>();
+        health = planeMoving.health;
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        healthUI.rectTransform.localScale = new Vector3((float)planeMoving.health/health, healthUI.rectTransform.localScale.y);
+    }
+}
