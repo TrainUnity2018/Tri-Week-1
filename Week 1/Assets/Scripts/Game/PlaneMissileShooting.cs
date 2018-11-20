@@ -17,7 +17,7 @@ public class PlaneMissileShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         shootingDelayTimer += Time.deltaTime;
-        if (shootingDelayTimer >= shootingDelay)
+        if (shootingDelayTimer >= shootingDelay && Input.GetKeyDown(KeyCode.C))
         {
             shootingDelayTimer = 0;
             Shooting();

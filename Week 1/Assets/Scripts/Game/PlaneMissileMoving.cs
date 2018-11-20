@@ -14,12 +14,12 @@ public class PlaneMissileMoving : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("EnemyPlane").transform;
 	}
 
     // Update is called once per frame
     void Update()
     {
+        target = GameObject.FindGameObjectWithTag("EnemyPlane").transform;
         Vector3 direction = (Vector3)target.position - this.transform.position;
         direction.Normalize();
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
