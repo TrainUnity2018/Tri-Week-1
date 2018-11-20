@@ -921,6 +921,7 @@ GameObject:
   - component: {fileID: 1855994892}
   - component: {fileID: 1855994893}
   - component: {fileID: 1855994894}
+  - component: {fileID: 1855994895}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Player
@@ -1052,7 +1053,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855994886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eae30a2e98ee0c4c8bca02a2ed7b989, type: 3}
   m_Name: 
@@ -1094,6 +1095,20 @@ MonoBehaviour:
   bulletPrefab2: {fileID: 1472087057192494, guid: 0f473f3eb687c394d9a6514bb70fd97f,
     type: 2}
   bulletPrefab3: {fileID: 1056661838182170, guid: 8a254dabbb82d1147bb60fcb1a71a62d,
+    type: 2}
+--- !u!114 &1855994895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855994886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0dc7bf366c5c445b7aa8513dea17d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePosition: {fileID: 97726884}
+  bulletPrefab: {fileID: 1606921274413948, guid: 05edc4ba3e9be604f929a73a0e585c12,
     type: 2}
 --- !u!1 &2086025835
 GameObject:
