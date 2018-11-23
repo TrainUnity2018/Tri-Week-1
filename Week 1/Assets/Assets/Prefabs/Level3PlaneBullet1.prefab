@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4971112095345134}
   - component: {fileID: 212446371388466980}
-  - component: {fileID: 50084044885814966}
   - component: {fileID: 58276181056135416}
+  - component: {fileID: 50084044885814966}
   - component: {fileID: 114795365502942682}
   m_Layer: 0
   m_Name: Level3PlaneBullet1
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300026, guid: 08a75577cd5e1db4fa40d6c8d7c878da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4193817909773726}
   - component: {fileID: 212870362017855688}
-  - component: {fileID: 50417082341421878}
   - component: {fileID: 58047962851068590}
+  - component: {fileID: 50417082341421878}
   - component: {fileID: 114526353809356682}
   m_Layer: 0
   m_Name: UpgradeBullet
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300044, guid: 08a75577cd5e1db4fa40d6c8d7c878da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

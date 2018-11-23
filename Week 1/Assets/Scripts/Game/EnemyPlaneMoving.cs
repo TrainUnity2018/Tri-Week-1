@@ -27,6 +27,10 @@ public class EnemyPlaneMoving : MonoBehaviour {
 
     void OnDestroy()
     {
+        int rand = (int)Random.Range(-1, 2);
+        if (rand == 1)
+        {
             Instantiate(upgradeDrop, this.transform.position, Quaternion.identity);
+        }
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Bottom
   - EnemyPlane
   - Upgrade
+  - Up
   layers:
   - Default
   - TransparentFX
