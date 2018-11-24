@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level3PlaneBulletMoving1 : MonoBehaviour {
+public class Item : MonoBehaviour {
 
-    private float speed = 5f;
+    public float speed = 2f;
 
     // Use this for initialization
     void Start () {
@@ -13,19 +13,24 @@ public class Level3PlaneBulletMoving1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.transform.position += new Vector3((float)-(speed / 10), (float)speed) * Time.deltaTime;
-    }
+        Move();
+	}
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "BorderUp")
+        if (col.gameObject.tag == "BorderDown")
         {
             Destroy(this.gameObject);
         }
-        if (col.gameObject.tag == "EnemyPlane")
+
+        if (col.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            Destroy(col.gameObject);
         }
+    }
+
+    public virtual void Move()
+    {
+        this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
     }
 }

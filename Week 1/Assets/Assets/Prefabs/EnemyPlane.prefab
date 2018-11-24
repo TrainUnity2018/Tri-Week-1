@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd4a9a51271834ab62f43b9f09452b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  damage: 1
   upgradeDrop: {fileID: 1435579395184704, guid: 5598da2007600684e9d36e773b3bf626,
     type: 2}
 --- !u!212 &212962765826683036

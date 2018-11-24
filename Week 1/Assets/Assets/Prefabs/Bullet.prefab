@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50742153697793892}
   - component: {fileID: 114323938833843286}
   m_Layer: 0
-  m_Name: Level1PlaneBullet
+  m_Name: Bullet
   m_TagString: PlaneBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,8 +36,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472087057192494}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8712388, y: -3.0115821, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.08715574, w: 0.9961947}
+  m_LocalPosition: {x: -1.8712387, y: -3.0115821, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d532f9390c3fa24185682fbb408ed92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  damage: 5
 --- !u!212 &212753147209411410
 SpriteRenderer:
   m_ObjectHideFlags: 1

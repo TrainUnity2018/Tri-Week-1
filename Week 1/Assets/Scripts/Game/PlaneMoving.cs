@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlaneMoving : MonoBehaviour {
 
+    private float speed = 0.1f;
+    public int health = 5;
+
+
     private Vector3 velocityU = new Vector3(0, 0);
     private Vector3 velocityD = new Vector3(0, 0);
     private Vector3 velocityL = new Vector3(0, 0);
@@ -12,9 +16,8 @@ public class PlaneMoving : MonoBehaviour {
     private bool hitBorderD = false;
     private bool hitBorderL = false;
     private bool hitBorderR = false;
-    public int health = 5;
+    
     private ColliderDistance2D coldist;
-    private int bulletLevel = 1;
 
     // Use this for initialization
     void Start () {
@@ -25,7 +28,7 @@ public class PlaneMoving : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.LeftArrow))
         {
-            velocityL -= new Vector3((float)0.1, 0) * Time.deltaTime;
+            velocityL -= new Vector3((float)speed, 0) * Time.deltaTime;
             if (!hitBorderL)
             {
                 this.transform.position += velocityL;
@@ -39,7 +42,7 @@ public class PlaneMoving : MonoBehaviour {
             }
             if (velocityL != Vector3.zero)
             {
-                velocityL += new Vector3((float)0.1, 0) * Time.deltaTime;
+                velocityL += new Vector3((float)speed, 0) * Time.deltaTime;
                 if (!hitBorderL)
                 {
                     this.transform.position += velocityL;
@@ -49,7 +52,7 @@ public class PlaneMoving : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            velocityR += new Vector3((float)0.1, 0) * Time.deltaTime;
+            velocityR += new Vector3((float)speed, 0) * Time.deltaTime;
             if (!hitBorderR)
             {
                 this.transform.position += velocityR;
@@ -63,7 +66,7 @@ public class PlaneMoving : MonoBehaviour {
             }
             if (velocityR != Vector3.zero)
             {
-                velocityR -= new Vector3((float)0.1, 0) * Time.deltaTime;
+                velocityR -= new Vector3((float)speed, 0) * Time.deltaTime;
                 if (!hitBorderR)
                 {
                     this.transform.position += velocityR;
@@ -73,7 +76,7 @@ public class PlaneMoving : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            velocityD -= new Vector3(0, (float)0.1) * Time.deltaTime;
+            velocityD -= new Vector3(0, (float)speed) * Time.deltaTime;
             if (!hitBorderD)
             {
                 this.transform.position += velocityD;
@@ -87,7 +90,7 @@ public class PlaneMoving : MonoBehaviour {
             }
             if (velocityD != Vector3.zero)
             {
-                velocityD += new Vector3(0, (float)0.1) * Time.deltaTime;
+                velocityD += new Vector3(0, (float)speed) * Time.deltaTime;
                 if (!hitBorderD)
                 {
                     this.transform.position += velocityD;
@@ -97,7 +100,7 @@ public class PlaneMoving : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            velocityU += new Vector3(0, (float)0.1) * Time.deltaTime;
+            velocityU += new Vector3(0, (float)speed) * Time.deltaTime;
             if (!hitBorderU)
             {
                 this.transform.position += velocityU;
@@ -111,7 +114,7 @@ public class PlaneMoving : MonoBehaviour {
             }
             if (velocityU != Vector3.zero)
             {
-                velocityU -= new Vector3(0, (float)0.1) * Time.deltaTime;
+                velocityU -= new Vector3(0, (float)speed) * Time.deltaTime;
                 if (!hitBorderU)
                 {
                     this.transform.position += velocityU;
@@ -121,77 +124,6 @@ public class PlaneMoving : MonoBehaviour {
 
     }
 
-    //void OnCollisionEnter2D(Collision2D col)
-    //{
-    //    if (col.gameObject.tag == "BorderLeft")
-    //    {
-            
-    //        Debug.Log(col.gameObject.tag);
-    //        hitBorderL = true;
-    //    }
-
-    //    if (col.gameObject.tag == "BorderRight")
-    //    {
-    //        hitBorderR = true;
-    //    }
-
-    //    if (col.gameObject.tag == "BorderUp")
-    //    {
-    //        hitBorderU = true;
-    //    }
-
-    //    if (col.gameObject.tag == "BorderDown")
-    //    {
-    //        hitBorderD = true;
-    //    }
-    //}
-
-    //void OnCollisionStay2D(Collision2D col)
-    //{
-    //    if (col.gameObject.tag == "BorderLeft")
-    //    {
-
-    //    }
-
-    //    if (col.gameObject.tag == "BorderRight")
-    //    {
-
-    //    }
-
-    //    if (col.gameObject.tag == "BorderUp")
-    //    {
-
-    //    }
-
-    //    if (col.gameObject.tag == "BorderDown")
-    //    {
-
-    //    }
-    //}
-
-    //void OnCollisionExit2D(Collision2D col)
-    //{
-    //    if (col.gameObject.tag == "BorderLeft")
-    //    {
-    //        Debug.Log(col.gameObject.tag);
-    //        hitBorderL = false;
-    //    }
-
-    //    if (col.gameObject.tag == "BorderRight")
-    //    {
-    //        hitBorderR = false;
-    //    }
-
-    //    if (col.gameObject.tag == "BorderUp")
-    //    {
-    //        hitBorderU = false;
-    //    }
-
-    //    if (col.gameObject.tag == "BorderDown")
-    //    {
-    //        hitBorderD = false;
-    //    }
-    //}
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -229,8 +161,6 @@ public class PlaneMoving : MonoBehaviour {
 
         if (col.gameObject.tag == "EnemyPlane")
         {
-            health -= 1;
-            Destroy(col.gameObject);
             if (health == 0)
             {
                 Destroy(this.gameObject);
@@ -240,18 +170,7 @@ public class PlaneMoving : MonoBehaviour {
 
         if (col.gameObject.tag == "Upgrade")
         {
-            bulletLevel++;
-            if (bulletLevel == 2)
-            {
-                this.gameObject.GetComponent<Level1PlaneShooting>().enabled = false;
-                this.gameObject.GetComponent<Level2PlaneShooting>().enabled = true;
-            }
-            else if (bulletLevel == 3)
-            {
-                this.gameObject.GetComponent<Level2PlaneShooting>().enabled = false;
-                this.gameObject.GetComponent<Level3PlaneShooting>().enabled = true;
-            }
-            Destroy(col.gameObject);
+            
         }
     }
 

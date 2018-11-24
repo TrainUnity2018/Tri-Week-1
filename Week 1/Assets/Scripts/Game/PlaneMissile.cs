@@ -3,16 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneMissileMoving : MonoBehaviour {
+public class PlaneMissile : PlaneBullet {
 
-    private float speed = 5f;
     private float rotateSpeed = 5f;
     private Transform enemyTarget;
-
-    
-    // Use this for initialization
-	void Start () {
-    }
 
     // Update is called once per frame
     void Update()
@@ -25,18 +19,14 @@ public class PlaneMissileMoving : MonoBehaviour {
         {
 
         }
-        
-        //enemyTarget = GameObject.FindGameObjectWithTag("EnemyPlane").transform;
 
         if (enemyTarget != null)
         {
-            Vector3 direction = enemyTarget.position - this.transform.position;
-            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-            transform.rotation = Quaternion.Slerp(transform.rotation, (Quaternion.AngleAxis(angle, Vector3.forward)), rotateSpeed * Time.deltaTime);
+            Rotate();
         }
-        
-        this.transform.position += this.transform.up * speed * Time.deltaTime;
 
+        Move();
+        
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -53,5 +43,10 @@ public class PlaneMissileMoving : MonoBehaviour {
         }
     }
 
-    
+    public virtual void Rotate()
+    {
+        Vector3 direction = enemyTarget.position - this.transform.position;
+        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        transform.rotation = Quaternion.Slerp(transform.rotation, (Quaternion.AngleAxis(angle, Vector3.forward)), rotateSpeed * Time.deltaTime);
+    }
 }
