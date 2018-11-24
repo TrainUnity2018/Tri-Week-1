@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212753147209411410}
   - component: {fileID: 58732307234727658}
   - component: {fileID: 50742153697793892}
-  - component: {fileID: 114323938833843286}
+  - component: {fileID: 114710729466768486}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: PlaneBullet
   m_TagString: PlaneBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.23
---- !u!114 &114323938833843286
+--- !u!114 &114710729466768486
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,11 +86,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1472087057192494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d532f9390c3fa24185682fbb408ed92, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f0bd15259d3184428182faabb71f515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  damage: 5
 --- !u!212 &212753147209411410
 SpriteRenderer:
   m_ObjectHideFlags: 1

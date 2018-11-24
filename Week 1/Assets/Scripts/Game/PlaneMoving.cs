@@ -122,6 +122,10 @@ public class PlaneMoving : MonoBehaviour {
             }
         }
 
+        if (health == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
@@ -161,11 +165,7 @@ public class PlaneMoving : MonoBehaviour {
 
         if (col.gameObject.tag == "EnemyPlane")
         {
-            if (health == 0)
-            {
-                Destroy(this.gameObject);
-            }
-            Debug.Log(health);
+            
         }
 
         if (col.gameObject.tag == "Upgrade")

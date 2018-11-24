@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8baba0baecd90f84b83ecce76c25711f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1050466917306058, guid: 21e428c7e18a82f488df61fec5ffd334, type: 2}
+  enemy: {fileID: 1718861886267222, guid: 7f4ae62bc4cd50c4cbb23ab41783e68a, type: 2}
 --- !u!4 &521138355
 Transform:
   m_ObjectHideFlags: 0
