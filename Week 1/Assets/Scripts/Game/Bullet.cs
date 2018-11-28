@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    protected float speed = 5f;
+    public float speed;
+    public int damage;
     
     // Use this for initialization
 	void Start () {

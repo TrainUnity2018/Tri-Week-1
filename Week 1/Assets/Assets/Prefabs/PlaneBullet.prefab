@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114710729466768486}
   m_Layer: 0
   m_Name: PlaneBullet
-  m_TagString: PlaneBullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0bd15259d3184428182faabb71f515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  damage: 1
 --- !u!212 &212753147209411410
 SpriteRenderer:
   m_ObjectHideFlags: 1

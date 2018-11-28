@@ -18,7 +18,12 @@ public class EnemyBullet : Bullet {
         if (col.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            col.gameObject.GetComponent<PlaneMoving>().health -= (int)1;
+            if (col.gameObject.GetComponent<Plane>().armor > 0)
+            {
+                col.gameObject.GetComponent<Plane>().armor -= damage;
+            }
+            else
+                col.gameObject.GetComponent<Plane>().health -= damage;
         }
     }
 }

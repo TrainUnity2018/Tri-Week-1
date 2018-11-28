@@ -11,8 +11,10 @@ TagManager:
   - PlaneBullet
   - Bottom
   - EnemyPlane
-  - Upgrade
   - Up
+  - UpgradeVertical
+  - UpgradeCone
+  - Armor
   layers:
   - Default
   - TransparentFX

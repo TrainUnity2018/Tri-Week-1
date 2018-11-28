@@ -7,13 +7,13 @@ public class HealthUI : MonoBehaviour {
 
     public Image healthUI;
     public GameObject player;
-    private PlaneMoving planeMoving;
+    private Plane planeMoving;
     private int health;
 
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-        planeMoving = player.GetComponent<PlaneMoving>();
+        planeMoving = player.GetComponent<Plane>();
         health = planeMoving.health;
     }
 	

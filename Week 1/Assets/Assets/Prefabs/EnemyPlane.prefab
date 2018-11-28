@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1718861886267222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7288158, y: 2.0381536, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4048763644154122}
   m_Father: {fileID: 0}
@@ -130,9 +130,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  damage: 1
-  upgradeDrop: {fileID: 1435579395184704, guid: 5598da2007600684e9d36e773b3bf626,
+  damage: 0
+  health: 2
+  bulletUpgradeDrop: {fileID: 1435579395184704, guid: 5598da2007600684e9d36e773b3bf626,
     type: 2}
+  bulletUpgradeDrop2: {fileID: 1160544179661496, guid: 3495e7bc29ebd584b94e1fa207e14430,
+    type: 2}
+  armorDrop: {fileID: 1305219322863702, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
 --- !u!114 &114977258694925944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +151,8 @@ MonoBehaviour:
   firePosition: {fileID: 4048763644154122}
   bulletPrefab: {fileID: 1981819266954090, guid: f6c6a9c8220c48e4db11a0552c1bc1cc,
     type: 2}
+  shootingDelay: 2
+  enable: 1
 --- !u!212 &212669653243954834
 SpriteRenderer:
   m_ObjectHideFlags: 1

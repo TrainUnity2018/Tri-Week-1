@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class EnemyPlane : MonoBehaviour {
 
-    public float speed = 5f;
-    public float damage = 1;
+    public float speed;
+    public int damage;
+    public int health;
 
-    public GameObject upgradeDrop;
+    public GameObject bulletUpgradeDrop;
+    public GameObject bulletUpgradeDrop2;
+    public GameObject armorDrop;
 
     // Use this for initialization
     void Start () {
@@ -17,6 +20,7 @@ public class EnemyPlane : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        Die();
         Move();
     }
 
@@ -30,21 +34,47 @@ public class EnemyPlane : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            col.gameObject.GetComponent<PlaneMoving>().health -= (int)damage;
+            if (col.gameObject.GetComponent<Plane>().armor > 0)
+            {
+                col.gameObject.GetComponent<Plane>().armor -= damage;
+            }
+            else
+                col.gameObject.GetComponent<Plane>().health -= damage;
         }
     }
 
     void OnDestroy()
     {
-        int rand = (int)Random.Range(-1, 2);
-        if (rand == 1)
-        {
-            Instantiate(upgradeDrop, this.transform.position, Quaternion.identity);
-        }
+        DropItem();
     }
 
     public virtual void Move()
     {
         this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
+    }
+
+    public virtual void DropItem()
+    {
+        int rand = (int)Random.Range(-3, 3);
+        if (rand == 1)
+        {
+            Instantiate(bulletUpgradeDrop, this.transform.position, Quaternion.identity);
+        }
+        else if (rand == 2)
+        {
+            Instantiate(bulletUpgradeDrop2, this.transform.position, Quaternion.identity);
+        }
+        else if (rand == -2)
+        {
+            Instantiate(armorDrop, this.transform.position, Quaternion.identity);
+        }
+    }
+
+    public virtual void Die()
+    {
+        if (health == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

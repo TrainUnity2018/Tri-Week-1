@@ -334,6 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1718861886267222, guid: 7f4ae62bc4cd50c4cbb23ab41783e68a, type: 2}
+  spawnDelay: 5
+  appearDelay: 0.5
+  spawnNumber: 3
 --- !u!4 &521138355
 Transform:
   m_ObjectHideFlags: 0
@@ -655,6 +658,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0879703, y: 0.96287537}
   m_EdgeRadius: 0
+--- !u!1001 &1387645650
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.6516553
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.17471293
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.09375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553336807337968, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1463764140
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,8 +999,10 @@ GameObject:
   - component: {fileID: 1855994890}
   - component: {fileID: 1855994891}
   - component: {fileID: 1855994889}
-  - component: {fileID: 1855994892}
   - component: {fileID: 1855994895}
+  - component: {fileID: 1855994892}
+  - component: {fileID: 1855994893}
+  - component: {fileID: 1855994894}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Player
@@ -1035,6 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  armor: 0
 --- !u!61 &1855994890
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1088,12 +1136,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855994886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eae30a2e98ee0c4c8bca02a2ed7b989, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a0d173fd700f1445b4dd2c7ec094777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePosition: {fileID: 97726884}
   bulletPrefab: {fileID: 1472087057192494, guid: 0f473f3eb687c394d9a6514bb70fd97f,
     type: 2}
+  shootingDelay: 1
+  enable: 1
+  level: 1
+--- !u!114 &1855994893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855994886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6b235c5e020d54398f7a59e08767b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePosition: {fileID: 97726884}
+  bulletPrefab: {fileID: 1472087057192494, guid: 0f473f3eb687c394d9a6514bb70fd97f,
+    type: 2}
+  shootingDelay: 1
+  enable: 0
+  level: 1
+--- !u!114 &1855994894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855994886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3a0d59d5fc6e514ab71f3fc60eefbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1855994895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,8 +1185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePosition: {fileID: 97726884}
-  bulletPrefab: {fileID: 1606921274413948, guid: 05edc4ba3e9be604f929a73a0e585c12,
+  bulletPrefab: {fileID: 1712411572486118, guid: b1e956fa162c5b64197dcb149d87b933,
     type: 2}
+  shootingDelay: 2
+  enable: 1
 --- !u!1 &2103104995
 GameObject:
   m_ObjectHideFlags: 0

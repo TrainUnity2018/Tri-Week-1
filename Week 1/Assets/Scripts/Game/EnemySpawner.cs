@@ -8,13 +8,13 @@ public class EnemySpawner : MonoBehaviour {
     private float randX;
     private Vector3 whereToSpawn;
 
-    private float spawnDelay = 5f;
+    public float spawnDelay = 5f;
     private float spawnDelayTimer;
 
-    private float appearDelay = 0.5f;
+    public float appearDelay = 0.5f;
     private float appearDelayTimer;
 
-    private int spawnNumber = 2;
+    public int spawnNumber;
     private int spawnCount;
 
     // Use this for initialization
@@ -33,6 +33,18 @@ public class EnemySpawner : MonoBehaviour {
             spawnDelayTimer = 0;
             spawnCount = 0;
         }
+        Wave(spawnNumber);
+	}
+
+    public virtual void Spawn()
+    {
+        randX = Random.Range(-1.8f, 1.8f);
+        whereToSpawn = new Vector3(randX, this.transform.position.y);
+        Instantiate(enemy, whereToSpawn, Quaternion.identity);
+    }
+
+    public virtual void Wave(int spawnNumber)
+    {
         if (spawnCount < spawnNumber)
         {
             appearDelayTimer += Time.deltaTime;
@@ -43,13 +55,5 @@ public class EnemySpawner : MonoBehaviour {
                 spawnCount++;
             }
         }
-	}
-
-    public virtual void Spawn()
-    {
-        randX = Random.Range(-1.8f, 1.8f);
-        whereToSpawn = new Vector3(randX, this.transform.position.y);
-        Instantiate(enemy, whereToSpawn, Quaternion.identity);
     }
-
 }

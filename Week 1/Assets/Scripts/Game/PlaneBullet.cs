@@ -13,7 +13,7 @@ public class PlaneBullet : Bullet {
         if (col.gameObject.tag == "EnemyPlane")
         {
             Destroy(this.gameObject);
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<EnemyPlane>().health -= damage;
         }
     }
 }
