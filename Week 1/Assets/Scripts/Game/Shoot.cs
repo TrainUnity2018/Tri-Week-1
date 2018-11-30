@@ -28,7 +28,7 @@ public class Shoot : MonoBehaviour {
 	}
     
 
-    public virtual void Shooting (Transform pos, float startPosition, float rotateDegrees)
+    public virtual void Shooting (Transform pos, float startPosition, float rotateDegrees, GameObject bullet)
     {
         Vector3 position = pos.position;
         position += new Vector3(startPosition, 0);
@@ -36,11 +36,11 @@ public class Shoot : MonoBehaviour {
         Quaternion rotate = pos.rotation;
         rotate = Quaternion.Euler(Vector3.forward * rotateDegrees);
 
-        Instantiate(bulletPrefab, position, rotate);
+        Instantiate(bullet, position, rotate);
     }
 
     public virtual void Arrange ()
     {
-        Shooting(firePosition, 0, 0);
+        Shooting(firePosition, 0, 0, bulletPrefab);
     }
 }

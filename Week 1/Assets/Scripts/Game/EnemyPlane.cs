@@ -11,6 +11,7 @@ public class EnemyPlane : MonoBehaviour {
     public GameObject bulletUpgradeDrop;
     public GameObject bulletUpgradeDrop2;
     public GameObject armorDrop;
+    public GameObject healthDrop;
 
     // Use this for initialization
     void Start () {
@@ -68,11 +69,15 @@ public class EnemyPlane : MonoBehaviour {
         {
             Instantiate(armorDrop, this.transform.position, Quaternion.identity);
         }
+        else if (rand == 0)
+        {
+            Instantiate(healthDrop, this.transform.position, Quaternion.identity);
+        }
     }
 
     public virtual void Die()
     {
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }

@@ -2,19 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
-
-    public float speed = 2f;
-
-    // Use this for initialization
-    void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        Move();
-	}
+public class ItemHealth : Item {
+    
+    public int health = 1;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -25,12 +15,14 @@ public class Item : MonoBehaviour {
 
         if (col.gameObject.tag == "Player")
         {
+            if (col.gameObject.GetComponent<Plane>().health + health <= 5)
+                col.gameObject.GetComponent<Plane>().health += health;
+            else
+            {
+                col.gameObject.GetComponent<Plane>().health = 5;
+            }
             Destroy(this.gameObject);
         }
-    }
 
-    public virtual void Move()
-    {
-        this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
     }
 }
