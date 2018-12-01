@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour {
+public class Shoot {
 
     public Transform firePosition;
     public GameObject bulletPrefab;
@@ -10,13 +10,13 @@ public class Shoot : MonoBehaviour {
     protected float shootingDelayTimer;
     public bool enable = true;
 
-    void Start ()
+    public virtual void Start ()
     {
         shootingDelayTimer = 0;
     }
-	
+
     // Update is called once per frame
-	void Update () {
+    public virtual void Update () {
         
         shootingDelayTimer += Time.deltaTime;
         if (shootingDelayTimer >= shootingDelay)
@@ -36,7 +36,7 @@ public class Shoot : MonoBehaviour {
         Quaternion rotate = pos.rotation;
         rotate = Quaternion.Euler(Vector3.forward * rotateDegrees);
 
-        Instantiate(bullet, position, rotate);
+        //Instantiate(bullet, position, rotate);
     }
 
     public virtual void Arrange ()

@@ -18,19 +18,24 @@ public class Item : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "BorderDown")
-        {
-            Destroy(this.gameObject);
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-        }
+        OnCollide(col);
     }
 
     public virtual void Move()
     {
         this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
+    }
+
+    public virtual void OnCollide(Collider2D col)
+    {
+        if (col.gameObject.tag == "BorderDown")
+        {
+            Destroy(this.gameObject);
+        }
+        
+        if (col.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

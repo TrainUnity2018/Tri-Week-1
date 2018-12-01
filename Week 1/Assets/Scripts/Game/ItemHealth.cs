@@ -6,21 +6,13 @@ public class ItemHealth : Item {
     
     public int health = 1;
 
-    void OnTriggerEnter2D(Collider2D col)
+    public override void OnCollide(Collider2D col)
     {
-        if (col.gameObject.tag == "BorderDown")
-        {
-            Destroy(this.gameObject);
-        }
+        base.OnCollide(col);
 
         if (col.gameObject.tag == "Player")
         {
-            if (col.gameObject.GetComponent<Plane>().health + health <= 5)
-                col.gameObject.GetComponent<Plane>().health += health;
-            else
-            {
-                col.gameObject.GetComponent<Plane>().health = 5;
-            }
+            col.gameObject.GetComponent<Plane>().LootHealth(health);
             Destroy(this.gameObject);
         }
 

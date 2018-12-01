@@ -9,21 +9,14 @@ public class EnemyBullet : Bullet {
         transform.position -= transform.up * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    public override void OnCollide(Collider2D col)
     {
-        if (col.gameObject.tag == "BorderDown")
-        {
-            Destroy(this.gameObject);
-        }
+        base.OnCollide(col);
+
         if (col.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
-            if (col.gameObject.GetComponent<Plane>().armor > 0)
-            {
-                col.gameObject.GetComponent<Plane>().armor -= damage;
-            }
-            else
-                col.gameObject.GetComponent<Plane>().health -= damage;
+            Destroy(gameObject);
+            col.gameObject.GetComponent<Plane>().TakeDamage(damage);
         }
     }
 }

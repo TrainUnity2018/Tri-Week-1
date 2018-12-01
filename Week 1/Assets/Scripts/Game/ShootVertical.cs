@@ -22,8 +22,6 @@ public class ShootVertical : Shoot {
         if (col.gameObject.tag == "UpgradeVertical")
         {
             level++;
-            this.gameObject.GetComponent<ShootCone>().enable = false;
-            this.gameObject.GetComponent<ShootVertical>().enable = true;
         }
         
     }

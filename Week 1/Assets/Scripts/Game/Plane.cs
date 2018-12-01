@@ -5,8 +5,10 @@ using UnityEngine;
 public class Plane : MonoBehaviour {
 
     private float speed = 0.1f;
-    public int health = 5;
-    public int armor = 0;
+    public int initHealth = 5;
+    public int currentHealth;
+    public int initArmor = 0;
+    public int currentArmor;
 
     private Vector3 velocityU = new Vector3(0, 0);
     private Vector3 velocityD = new Vector3(0, 0);
@@ -21,12 +23,78 @@ public class Plane : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+        currentHealth = initHealth;
+        currentArmor = initArmor;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.LeftArrow))
+        InputHandle();
+    }
+
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "BorderLeft" && !hitBorderL)
+        {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position -= new Vector3((float)(coldist.distance), 0);
+            velocityL = Vector3.zero;
+            hitBorderL = true;
+        }
+
+        if (col.gameObject.tag == "BorderRight")
+        {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position += new Vector3((float)(coldist.distance), 0);
+            velocityR = Vector3.zero;
+            hitBorderR = true;
+        }
+
+        if (col.gameObject.tag == "BorderUp")
+        {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position += new Vector3(0, (float)(coldist.distance));
+            velocityU = Vector3.zero;
+            hitBorderU = true;
+        }
+
+        if (col.gameObject.tag == "BorderDown")
+        {
+            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
+            this.transform.position -= new Vector3(0, (float)(coldist.distance));
+            velocityD = Vector3.zero;
+            hitBorderD = true;
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D col) 
+    {
+        if (col.gameObject.tag == "BorderLeft")
+        {
+            hitBorderL = false;
+        }
+
+        if (col.gameObject.tag == "BorderRight")
+        {
+            hitBorderR = false;
+        }
+
+        if (col.gameObject.tag == "BorderUp")
+        {
+            hitBorderU = false;
+        }
+
+        if (col.gameObject.tag == "BorderDown")
+        {
+            hitBorderD = false;
+        }
+    }
+
+    void InputHandle()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             velocityL -= new Vector3((float)speed, 0) * Time.deltaTime;
             if (!hitBorderL)
@@ -121,79 +189,36 @@ public class Plane : MonoBehaviour {
                 }
             }
         }
-
-        if (health == 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
-
-    void OnTriggerEnter2D(Collider2D col)
+    public void TakeDamage(int damage)
     {
-        if (col.gameObject.tag == "BorderLeft" && !hitBorderL)
+        int damageAfterArmor = damage - currentArmor;
+        if (damageAfterArmor > 0)
         {
-            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
-            this.transform.position -= new Vector3((float)(coldist.distance), 0);
-            velocityL = Vector3.zero;
-            hitBorderL = true;
+            currentArmor = 0;
+            currentHealth -= damageAfterArmor;
+            if (currentHealth <= 0)
+                Destroy(gameObject);
         }
-
-        if (col.gameObject.tag == "BorderRight")
-        {
-            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
-            this.transform.position += new Vector3((float)(coldist.distance), 0);
-            velocityR = Vector3.zero;
-            hitBorderR = true;
-        }
-
-        if (col.gameObject.tag == "BorderUp")
-        {
-            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
-            this.transform.position += new Vector3(0, (float)(coldist.distance));
-            velocityU = Vector3.zero;
-            hitBorderU = true;
-        }
-
-        if (col.gameObject.tag == "BorderDown")
-        {
-            coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
-            this.transform.position -= new Vector3(0, (float)(coldist.distance));
-            velocityD = Vector3.zero;
-            hitBorderD = true;
-        }
-
-        if (col.gameObject.tag == "EnemyPlane")
-        {
-            
-        }
-
-        if (col.gameObject.tag == "Upgrade")
-        {
-            
-        }
+        else
+            currentArmor -= damage;
     }
 
-    void OnTriggerExit2D(Collider2D col) 
+    public void LootHealth(int health)
     {
-        if (col.gameObject.tag == "BorderLeft")
-        {
-            hitBorderL = false;
-        }
+        currentHealth += health;
+        if (currentHealth >= initHealth)
+            currentHealth = initHealth;
+    }
 
-        if (col.gameObject.tag == "BorderRight")
-        {
-            hitBorderR = false;
-        }
+    public void LootArmor(int armor)
+    {
+        currentArmor += armor;
+    }
 
-        if (col.gameObject.tag == "BorderUp")
-        {
-            hitBorderU = false;
-        }
-
-        if (col.gameObject.tag == "BorderDown")
-        {
-            hitBorderD = false;
-        }
+    public void UpgradeHealth(int health)
+    {
+        initHealth += health;
     }
 }

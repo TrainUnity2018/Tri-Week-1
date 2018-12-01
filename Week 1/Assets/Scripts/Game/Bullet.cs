@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        
+        OnCollide(col);
     }
 
     public virtual void Move()
@@ -27,4 +27,9 @@ public class Bullet : MonoBehaviour {
         transform.position += transform.up * speed * Time.deltaTime;
     }
 
+    public virtual void OnCollide(Collider2D col)
+    {
+        if (col.gameObject.tag == "BorderUp")
+            Destroy(gameObject);
+    }
 }

@@ -21,27 +21,12 @@ public class EnemyPlane : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Die();
         Move();
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Bottom")
-        {
-            Destroy(this.gameObject);
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-            if (col.gameObject.GetComponent<Plane>().armor > 0)
-            {
-                col.gameObject.GetComponent<Plane>().armor -= damage;
-            }
-            else
-                col.gameObject.GetComponent<Plane>().health -= damage;
-        }
+        OnCollide(col);
     }
 
     void OnDestroy()
@@ -52,6 +37,20 @@ public class EnemyPlane : MonoBehaviour {
     public virtual void Move()
     {
         this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
+    }
+
+    public virtual void OnCollide(Collider2D col)
+    {
+        if (col.gameObject.tag == "Bottom")
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (col.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+            col.gameObject.GetComponent<Plane>().TakeDamage(damage);
+        }
     }
 
     public virtual void DropItem()
@@ -75,11 +74,11 @@ public class EnemyPlane : MonoBehaviour {
         }
     }
 
-    public virtual void Die()
+    public virtual void TakeDamage(int damage)
     {
+        health -= damage;
         if (health <= 0)
-        {
             Destroy(gameObject);
-        }
     }
+
 }

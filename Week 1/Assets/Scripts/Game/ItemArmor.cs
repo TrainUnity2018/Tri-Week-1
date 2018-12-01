@@ -6,16 +6,13 @@ public class ItemArmor : Item {
 
     public int armor = 1;
 
-    void OnTriggerEnter2D(Collider2D col)
+    public override void OnCollide(Collider2D col)
     {
-        if (col.gameObject.tag == "BorderDown")
-        {
-            Destroy(this.gameObject);
-        }
+        base.OnCollide(col);
 
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.GetComponent<Plane>().armor += armor;
+            col.gameObject.GetComponent<Plane>().LootArmor(armor);
             Destroy(this.gameObject);
         }
 
