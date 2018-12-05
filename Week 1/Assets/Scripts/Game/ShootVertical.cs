@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class ShootVertical : Shoot {
 
-    public int level = 1;
-    public GameObject bulletLevel2Prefab;
-    public GameObject bulletLevel3Prefab;
-    public GameObject bulletLevel4Prefab;
+    private int level;
+    private GameObject bulletLevel2Prefab;
+    private GameObject bulletLevel3Prefab;
+    private GameObject bulletLevel4Prefab;
     private float[] level2Pos = { (float)-0.4, (float)0.4 };
     private float[] level3Pos = { (float)-0.5, 0, (float)0.5};
     private float[] level4Pos = { (float)-1.2, (float)-0.5, (float)0.5, (float)1.2 };
 
-    void Start()
+    public ShootVertical(GameObject bulletPrefab, GameObject bulletLevel2Prefab, GameObject bulletLevel3Prefab, GameObject bulletLevel4Prefab, Transform firePosition, float shootingDelay, int level)
     {
-        shootingDelayTimer = 0;
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "UpgradeVertical")
-        {
-            level++;
-        }
-        
+        this.bulletPrefab = bulletPrefab;
+        this.bulletLevel2Prefab = bulletLevel2Prefab;
+        this.bulletLevel3Prefab = bulletLevel3Prefab;
+        this.bulletLevel4Prefab = bulletLevel4Prefab;
+        this.firePosition = firePosition;
+        this.shootingDelay = shootingDelay;
+        this.level = level;
     }
 
     public override void Arrange()

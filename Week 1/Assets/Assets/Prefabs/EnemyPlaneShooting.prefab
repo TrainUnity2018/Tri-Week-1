@@ -37,7 +37,6 @@ GameObject:
   - component: {fileID: 212346449043113036}
   - component: {fileID: 50143118434613822}
   - component: {fileID: 114135097477616152}
-  - component: {fileID: 114969309517308162}
   - component: {fileID: 60320171439472972}
   m_Layer: 0
   m_Name: EnemyPlaneShooting
@@ -235,22 +234,6 @@ MonoBehaviour:
     type: 2}
   armorDrop: {fileID: 1305219322863702, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
   healthDrop: {fileID: 1901587968006404, guid: 08ac0934134e7e24481f014af9369daf, type: 2}
---- !u!114 &114969309517308162
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1754006278977996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eae30a2e98ee0c4c8bca02a2ed7b989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePosition: {fileID: 4306073698263188}
-  bulletPrefab: {fileID: 1981819266954090, guid: f6c6a9c8220c48e4db11a0552c1bc1cc,
-    type: 2}
-  shootingDelay: 1
-  enable: 1
 --- !u!212 &212346449043113036
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class Shoot {
 
-    public Transform firePosition;
-    public GameObject bulletPrefab;
-    public float shootingDelay = 1f;
+    protected Transform firePosition;
+    protected GameObject bulletPrefab;
+    protected float shootingDelay;
     protected float shootingDelayTimer;
-    public bool enable = true;
+
+    public Shoot() {
+
+    }
+
+    public Shoot(GameObject bulletPrefab, Transform firePosition, float shootingDelay)
+    {
+        this.bulletPrefab = bulletPrefab;
+        this.firePosition = firePosition;
+        this.shootingDelay = shootingDelay;
+    }
 
     public virtual void Start ()
     {
@@ -22,12 +32,10 @@ public class Shoot {
         if (shootingDelayTimer >= shootingDelay)
         {
             shootingDelayTimer = 0;
-            if (enable)
-                Arrange();
+            Arrange();
         }
 	}
     
-
     public virtual void Shooting (Transform pos, float startPosition, float rotateDegrees, GameObject bullet)
     {
         Vector3 position = pos.position;
@@ -37,6 +45,7 @@ public class Shoot {
         rotate = Quaternion.Euler(Vector3.forward * rotateDegrees);
 
         //Instantiate(bullet, position, rotate);
+        bullet = GameObject.Instantiate(bullet, position, rotate) as GameObject;
     }
 
     public virtual void Arrange ()
