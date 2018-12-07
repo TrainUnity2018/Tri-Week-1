@@ -8,7 +8,7 @@ public class PlaneMissileChase : MissileChase {
     {
         if (col.gameObject.tag == "EnemyPlane")
         {
-            Rotate(col.transform);
+            OnCollide(col);
         }
     }
 
@@ -16,7 +16,12 @@ public class PlaneMissileChase : MissileChase {
     {
         if (col.gameObject.tag == "EnemyPlane")
         {
-            Rotate(col.transform);
+            OnCollide(col);
         }
+    }
+
+    public virtual void OnCollide(Collider2D col)
+    {
+        FindRotateAngle(col.transform);
     }
 }

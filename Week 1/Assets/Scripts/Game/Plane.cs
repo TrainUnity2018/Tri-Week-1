@@ -21,6 +21,11 @@ public class Plane : MonoBehaviour {
     
     private ColliderDistance2D coldist;
 
+    float shootingDelayTimer = 0;
+    float shootingDelay = 1f;
+    public GameObject MISSILE;
+    public Transform firepos;
+
     // Use this for initialization
     void Start () {
         currentHealth = initHealth;
@@ -30,6 +35,16 @@ public class Plane : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         InputHandle();
+
+        shootingDelayTimer += Time.deltaTime;
+        if (shootingDelayTimer >= shootingDelay && Input.GetKeyDown(KeyCode.C))
+        {
+            shootingDelayTimer = 0;
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                Instantiate(MISSILE, firepos.position, Quaternion.identity);
+            }
+        }
     }
 
 
