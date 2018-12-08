@@ -14,10 +14,10 @@ public class Plane : MonoBehaviour {
     private Vector3 velocityD = new Vector3(0, 0);
     private Vector3 velocityL = new Vector3(0, 0);
     private Vector3 velocityR = new Vector3(0, 0);
-    private bool hitBorderU = false;
-    private bool hitBorderD = false;
-    private bool hitBorderL = false;
-    private bool hitBorderR = false;
+    public bool hitBorderU = false;
+    public bool hitBorderD = false;
+    public bool hitBorderL = false;
+    public bool hitBorderR = false;
     
     private ColliderDistance2D coldist;
 
@@ -50,7 +50,7 @@ public class Plane : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "BorderLeft" && !hitBorderL)
+        if (col.gameObject.tag == "BorderLeft")
         {
             coldist = this.gameObject.GetComponent<Collider2D>().Distance(col);
             this.transform.position -= new Vector3((float)(coldist.distance), 0);
