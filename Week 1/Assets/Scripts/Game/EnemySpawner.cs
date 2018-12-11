@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject enemy;
     public GameObject enemyShooting;
+    public GameObject enemyHorizontal;
     private float randX;
     private int rand;
     private Vector3 whereToSpawn;
@@ -42,11 +43,15 @@ public class EnemySpawner : MonoBehaviour {
     {
         randX = Random.Range(-1.8f, 1.8f);
         whereToSpawn = new Vector3(randX, this.transform.position.y);
-        rand = Random.Range(-1, 2);
+        rand = Random.Range(-2, 2);
         if (rand == 0)
             Instantiate(enemy, whereToSpawn, enemy.transform.rotation);
         else if (rand == 1)
             Instantiate(enemyShooting, whereToSpawn, enemyShooting.transform.rotation);
+        else if (rand == -1)
+        {
+            Instantiate(enemyHorizontal, whereToSpawn, enemyHorizontal.transform.rotation);
+        }
     }
 
     public virtual void Wave(int spawnNumber)

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class EnemyPlane2 : EnemyPlane {
 
-    protected float horizontalMove = 0.01f;
-    public float horizontalMoveSpeed;
+    public float horizontalMoveSpeed = 0.01f;
     private Vector3 horizontalVelocity;
     private bool state;
     public float stateTimerDelay;
     protected float stateTimer;
     private bool state2;
     private int count;
+    private bool startState;
+    private float startStateTimerDelay;
 
     void Start()
     {
@@ -21,47 +22,93 @@ public class EnemyPlane2 : EnemyPlane {
         state2 = false;
         stateTimer = 0;
         count = 0;
+
+        startState = true;
+        startStateTimerDelay = (float)(stateTimerDelay / 2);
     }
 
     public override void Move()
     {
-        stateTimer += Time.deltaTime;
-        if (stateTimer >= stateTimerDelay)
+        if (startState == true)
         {
-            stateTimer = 0;
-            state = !state;
-            count++;
-            if (count == 2 || count == 4) {
+            stateTimer += Time.deltaTime;
+            if (stateTimer >= startStateTimerDelay)
+            {
+                stateTimer = 0;
+                state = !state;
+                count++;
+                if (count == 2 || count == 4)
+                {
+                    state2 = !state2;
+                    startState = false;
+                }
 
-                state2 = !state2;
-                //horizontalVelocity = new Vector3(0, 0);
+                if (count == 4) count = 0;
             }
-            
-            if (count == 4) count = 0; 
-        }
-        if (state2 == false)
-        {
-            if (state == false)
+            if (state2 == false)
             {
-                horizontalVelocity -= new Vector3((float)horizontalMove, 0) * Time.deltaTime;
+                if (state == false)
+                {
+                    horizontalVelocity -= new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
+                else if (state == true)
+                {
+                    horizontalVelocity += new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
             }
-            else if (state == true)
+            else
             {
-                horizontalVelocity += new Vector3((float)horizontalMove, 0) * Time.deltaTime;
+                if (state == false)
+                {
+                    horizontalVelocity += new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
+                else if (state == true)
+                {
+                    horizontalVelocity -= new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
             }
+            this.transform.position += horizontalVelocity;
         }
         else
         {
-            if (state == false)
+            stateTimer += Time.deltaTime;
+            if (stateTimer >= stateTimerDelay)
             {
-                horizontalVelocity += new Vector3((float)horizontalMove, 0) * Time.deltaTime;
+                stateTimer = 0;
+                state = !state;
+                count++;
+                if (count == 2 || count == 4)
+                {
+                    state2 = !state2;
+                }
+
+                if (count == 4) count = 0;
             }
-            else if (state == true)
+            if (state2 == false)
             {
-                horizontalVelocity -= new Vector3((float)horizontalMove, 0) * Time.deltaTime;
+                if (state == false)
+                {
+                    horizontalVelocity -= new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
+                else if (state == true)
+                {
+                    horizontalVelocity += new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
             }
+            else
+            {
+                if (state == false)
+                {
+                    horizontalVelocity += new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
+                else if (state == true)
+                {
+                    horizontalVelocity -= new Vector3((float)horizontalMoveSpeed, 0) * Time.deltaTime;
+                }
+            }
+            this.transform.position += horizontalVelocity;
         }
+
         this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
-        this.transform.position += horizontalVelocity;
     }
 }
