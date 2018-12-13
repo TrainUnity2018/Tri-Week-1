@@ -7,6 +7,9 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject enemy;
     public GameObject enemyShooting;
     public GameObject enemyHorizontal;
+    public GameObject enemyHorizontalShooting;
+    public GameObject enemyZigzag;
+    public GameObject enemyZigzagShooting;
     private float randX;
     private int rand;
     private Vector3 whereToSpawn;
@@ -43,7 +46,7 @@ public class EnemySpawner : MonoBehaviour {
     {
         randX = Random.Range(-1.8f, 1.8f);
         whereToSpawn = new Vector3(randX, this.transform.position.y);
-        rand = Random.Range(-2, 2);
+        rand = Random.Range(-3, 4);
         if (rand == 0)
             Instantiate(enemy, whereToSpawn, enemy.transform.rotation);
         else if (rand == 1)
@@ -51,6 +54,18 @@ public class EnemySpawner : MonoBehaviour {
         else if (rand == -1)
         {
             Instantiate(enemyHorizontal, whereToSpawn, enemyHorizontal.transform.rotation);
+        }
+        else if (rand == 2)
+        {
+            Instantiate(enemyHorizontalShooting, whereToSpawn, enemyHorizontalShooting.transform.rotation);
+        }
+        else if (rand == -2)
+        {
+            Instantiate(enemyZigzag, whereToSpawn, enemyZigzag.transform.rotation);
+        }
+        else if (rand == 3)
+        {
+            Instantiate(enemyZigzagShooting, whereToSpawn, enemyZigzagShooting.transform.rotation);
         }
     }
 

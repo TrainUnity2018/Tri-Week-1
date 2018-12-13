@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPlane2 : EnemyPlane {
+public class EnemyPlaneHorizontal : EnemyPlane {
 
     public float horizontalMoveSpeed = 0.01f;
     private Vector3 horizontalVelocity;

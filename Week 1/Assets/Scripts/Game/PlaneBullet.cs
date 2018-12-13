@@ -14,4 +14,9 @@ public class PlaneBullet : Bullet {
             col.gameObject.GetComponent<EnemyPlane>().TakeDamage(damage);
         }
     }
+
+    public override void Rotate()
+    {
+        
+    }
 }

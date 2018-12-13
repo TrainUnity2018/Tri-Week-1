@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Move();
+        Rotate();
 	}
 
     void OnTriggerEnter2D(Collider2D col)
@@ -25,6 +26,11 @@ public class Bullet : MonoBehaviour {
     public virtual void Move()
     {
         transform.position += transform.up * speed * Time.deltaTime;
+    }
+
+    public virtual void Rotate()
+    {
+
     }
 
     public virtual void OnCollide(Collider2D col)
