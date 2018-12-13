@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50328775875175350}
   - component: {fileID: 114655145271745754}
   - component: {fileID: 114244583338830042}
+  - component: {fileID: 95222633534594536}
   m_Layer: 0
   m_Name: EnemyPlaneZigzagShooting
   m_TagString: EnemyPlane
@@ -118,6 +119,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.37986517, y: 0.77}
   m_EdgeRadius: 0
+--- !u!95 &95222633534594536
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133502547574416}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9749a3304efa1824d9711c4bad35cf90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114244583338830042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,13 +165,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   damage: 1
-  health: 100
+  health: 20
   bulletUpgradeDrop: {fileID: 1435579395184704, guid: 5598da2007600684e9d36e773b3bf626,
     type: 2}
   bulletUpgradeDrop2: {fileID: 1160544179661496, guid: 3495e7bc29ebd584b94e1fa207e14430,
     type: 2}
   armorDrop: {fileID: 1305219322863702, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
   healthDrop: {fileID: 1901587968006404, guid: 08ac0934134e7e24481f014af9369daf, type: 2}
+  animator: {fileID: 95222633534594536}
   zigzagRight: {x: 2, y: 0.5, z: 0}
   zigzagLeft: {x: -2, y: 0.5, z: 0}
   stateTimerDelay: 1

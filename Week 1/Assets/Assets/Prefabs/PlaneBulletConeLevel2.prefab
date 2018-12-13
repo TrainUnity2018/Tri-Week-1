@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4256955179303266}
   - component: {fileID: 212563705099982390}
   - component: {fileID: 50675462564083906}
-  - component: {fileID: 114510729611637940}
   - component: {fileID: 58955287539035958}
+  - component: {fileID: 114510729611637940}
+  - component: {fileID: 95602742957404888}
   m_Layer: 0
   m_Name: PlaneBulletConeLevel2
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463370526823382}
   m_LocalRotation: {x: 0, y: 0, z: -0.08715574, w: 0.9961947}
-  m_LocalPosition: {x: 1.1353312, y: -2.7738261, z: 0}
+  m_LocalPosition: {x: 1.1353312, y: 0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,12 +73,30 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.22
+--- !u!95 &95602742957404888
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463370526823382}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ca309051225d9a4797a396d549ed7c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114510729611637940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,6 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damage: 2
+  explodeDuration: 1
+  animator: {fileID: 95602742957404888}
 --- !u!212 &212563705099982390
 SpriteRenderer:
   m_ObjectHideFlags: 1

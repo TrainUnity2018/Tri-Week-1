@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 50306874606526360}
   - component: {fileID: 114580500154340490}
   - component: {fileID: 114491728197930860}
+  - component: {fileID: 95566875590847246}
   m_Layer: 0
   m_Name: EnemyPlaneHorizontalShooting
   m_TagString: EnemyPlane
@@ -118,6 +119,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.44367456, y: 0.77}
   m_EdgeRadius: 0
+--- !u!95 &95566875590847246
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929298796059348}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9a6feab4357bc347800203a3caafec3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114491728197930860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +172,7 @@ MonoBehaviour:
     type: 2}
   armorDrop: {fileID: 1305219322863702, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
   healthDrop: {fileID: 1901587968006404, guid: 08ac0934134e7e24481f014af9369daf, type: 2}
+  animator: {fileID: 95566875590847246}
   horizontalMoveSpeed: 0.01
   stateTimerDelay: 1
 --- !u!212 &212438489179066852

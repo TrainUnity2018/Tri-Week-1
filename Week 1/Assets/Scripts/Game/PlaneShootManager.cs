@@ -6,6 +6,13 @@ public class PlaneShootManager : ShootManager {
 
     private int coneLevel;
     private int verticalLevel;
+    public GameObject planeBulletConeLevel2;
+    public GameObject planeBulletConeLevel3;
+    public GameObject planeBulletConeLevel4;
+
+    public GameObject planeBulletVerticalLevel2;
+    public GameObject planeBulletVerticalLevel3;
+    public GameObject planeBulletVerticalLevel4;
 
 
     // Use this for initialization
@@ -32,14 +39,14 @@ public class PlaneShootManager : ShootManager {
         if (col.gameObject.tag == "UpgradeCone")
         {
             coneLevel++;
-            this.shoot = new ShootCone(Resources.Load<GameObject>("PlaneBullet"), Resources.Load<GameObject>("PlaneBulletConeLevel2"), Resources.Load<GameObject>("PlaneBulletConeLevel3"), Resources.Load<GameObject>("PlaneBulletConeLevel4"), firePosition.transform, shootingDelay, coneLevel);
+            this.shoot = new ShootCone(bulletPrefab, planeBulletConeLevel2, planeBulletConeLevel3, planeBulletConeLevel4, firePosition.transform, shootingDelay, coneLevel);
             this.shoot.Start();
         }
 
         if (col.gameObject.tag == "UpgradeVertical")
         {
             verticalLevel++;
-            this.shoot = new ShootVertical(Resources.Load<GameObject>("PlaneBullet"), Resources.Load<GameObject>("PlaneBulletVerticalLevel2"), Resources.Load<GameObject>("PlaneBulletVerticalLevel3"), Resources.Load<GameObject>("PlaneBulletVerticalLevel4"), firePosition.transform, shootingDelay, verticalLevel);
+            this.shoot = new ShootVertical(bulletPrefab, planeBulletVerticalLevel2, planeBulletVerticalLevel3, planeBulletVerticalLevel4, firePosition.transform, shootingDelay, verticalLevel);
             this.shoot.Start();
         }
     }

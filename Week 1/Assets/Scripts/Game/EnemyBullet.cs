@@ -6,6 +6,7 @@ public class EnemyBullet : Bullet {
 
     public override void Move()
     {
+        if (!isExploded)
         transform.position -= transform.up * speed * Time.deltaTime;
     }
 
@@ -13,10 +14,11 @@ public class EnemyBullet : Bullet {
     {
         base.OnCollide(col);
 
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && !isExploded)
         {
-            Destroy(gameObject);
+            OnExplode();
             col.gameObject.GetComponent<Plane>().TakeDamage(damage);
         }
+        
     }
 }

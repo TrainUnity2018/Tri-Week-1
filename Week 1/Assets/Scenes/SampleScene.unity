@@ -842,6 +842,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1066219531}
   m_CullTransparentMesh: 0
+--- !u!1001 &1371581390
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.419879
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.3892127
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861264260785294, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b77be09317949f44ad72a923748716f, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1463764140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1231,7 @@ GameObject:
   - component: {fileID: 1855994891}
   - component: {fileID: 1855994889}
   - component: {fileID: 1855994892}
+  - component: {fileID: 1855994893}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Player
@@ -1230,7 +1273,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2e484679a89128d418a2d286b6026ee8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1249,7 +1292,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855994886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.18, y: -4.58, z: -0.062326983}
+  m_LocalPosition: {x: -0.6, y: -2.19, z: 87.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 97726884}
@@ -1335,7 +1378,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePosition: {fileID: 97726883}
   shootingDelay: 1
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 1472087057192494, guid: 0f473f3eb687c394d9a6514bb70fd97f,
+    type: 2}
+  planeBulletConeLevel2: {fileID: 1463370526823382, guid: b8a378332221f134793013c41da993d6,
+    type: 2}
+  planeBulletConeLevel3: {fileID: 1330049608626974, guid: b6e391110ee6860498d1e6816c32e8b7,
+    type: 2}
+  planeBulletConeLevel4: {fileID: 1922315015245564, guid: 2e7462f63f568124a8e4672e2970eb68,
+    type: 2}
+  planeBulletVerticalLevel2: {fileID: 1212523318251860, guid: 959aa68e4a1164840b2bef04c714492e,
+    type: 2}
+  planeBulletVerticalLevel3: {fileID: 1027458927197430, guid: 910b35d2f1d41804fb4b326dd880e5eb,
+    type: 2}
+  planeBulletVerticalLevel4: {fileID: 1295918823436588, guid: 7a588155d410bdf45bd7d339ba23fc47,
+    type: 2}
+--- !u!95 &1855994893
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855994886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d31d3fff7effec34896bc3b0005083a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2103104995
 GameObject:
   m_ObjectHideFlags: 0

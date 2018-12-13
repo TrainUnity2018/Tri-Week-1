@@ -9,20 +9,21 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1490080999046230}
+  m_RootGameObject: {fileID: 1158971155976126}
   m_IsPrefabAsset: 1
---- !u!1 &1490080999046230
+--- !u!1 &1158971155976126
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4822536073379810}
-  - component: {fileID: 212989546558661492}
-  - component: {fileID: 50552515659037224}
-  - component: {fileID: 114480237821438628}
-  - component: {fileID: 58543297349501622}
+  - component: {fileID: 4613831404435724}
+  - component: {fileID: 212071328667585700}
+  - component: {fileID: 50900557400531816}
+  - component: {fileID: 58266015293265164}
+  - component: {fileID: 114444793431515038}
+  - component: {fileID: 95146895308983000}
   m_Layer: 0
   m_Name: PlaneBulletConeLevel4
   m_TagString: Untagged
@@ -30,26 +31,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4822536073379810
+--- !u!4 &4613831404435724
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490080999046230}
+  m_GameObject: {fileID: 1158971155976126}
   m_LocalRotation: {x: 0, y: 0, z: -0.08715574, w: 0.9961947}
-  m_LocalPosition: {x: 2.0366728, y: -1.4035534, z: 0}
+  m_LocalPosition: {x: -2.1, y: -0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50552515659037224
+--- !u!50 &50900557400531816
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490080999046230}
+  m_GameObject: {fileID: 1158971155976126}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,27 +64,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!58 &58543297349501622
+--- !u!58 &58266015293265164
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490080999046230}
+  m_GameObject: {fileID: 1158971155976126}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.28
---- !u!114 &114480237821438628
+--- !u!95 &95146895308983000
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158971155976126}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fda02a630addc07439ad2ade8cc3cbb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114444793431515038
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490080999046230}
+  m_GameObject: {fileID: 1158971155976126}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f0bd15259d3184428182faabb71f515, type: 3}
@@ -91,12 +110,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damage: 4
---- !u!212 &212989546558661492
+  explodeDuration: 0.06
+  animator: {fileID: 95146895308983000}
+--- !u!212 &212071328667585700
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490080999046230}
+  m_GameObject: {fileID: 1158971155976126}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

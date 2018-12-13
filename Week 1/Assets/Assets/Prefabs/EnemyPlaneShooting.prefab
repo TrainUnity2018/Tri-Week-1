@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 50256811586070602}
   - component: {fileID: 114955573053059406}
   - component: {fileID: 114605611952986950}
+  - component: {fileID: 95684343722591006}
   m_Layer: 0
   m_Name: EnemyPlaneShooting
   m_TagString: EnemyPlane
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943686544862764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3562216, y: 2.6321516, z: 0}
+  m_LocalPosition: {x: 0.09, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4075434351950898}
@@ -118,6 +119,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36900663, y: 0.6899197}
   m_EdgeRadius: 0
+--- !u!95 &95684343722591006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943686544862764}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a6a34289c2d9864ea5201a6d7c9b427, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114605611952986950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +172,7 @@ MonoBehaviour:
     type: 2}
   armorDrop: {fileID: 1305219322863702, guid: 916d78c5a369474428e89d96ace846e7, type: 2}
   healthDrop: {fileID: 1901587968006404, guid: 08ac0934134e7e24481f014af9369daf, type: 2}
+  animator: {fileID: 95684343722591006}
 --- !u!212 &212126815277871424
 SpriteRenderer:
   m_ObjectHideFlags: 1

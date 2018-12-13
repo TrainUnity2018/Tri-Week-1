@@ -13,9 +13,12 @@ public class EnemyPlane : MonoBehaviour {
     public GameObject armorDrop;
     public GameObject healthDrop;
 
+    protected bool isExploded;
+    public Animator animator;
+
     // Use this for initialization
     void Start () {
-		
+        isExploded = false;
 	}
 
     // Update is called once per frame
@@ -36,7 +39,8 @@ public class EnemyPlane : MonoBehaviour {
 
     public virtual void Move()
     {
-        this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
+        if (!isExploded)
+            this.transform.position -= new Vector3(0, (float)speed) * Time.deltaTime;
     }
 
     public virtual void OnCollide(Collider2D col)
@@ -46,11 +50,22 @@ public class EnemyPlane : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && !isExploded)
         {
-            Destroy(gameObject);
+            OnExplode();
             col.gameObject.GetComponent<Plane>().TakeDamage(damage);
         }
+        
+    }
+
+    public virtual void OnExplode()
+    {
+        isExploded = true;
+        animator.SetBool("isExploded", isExploded);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        if (gameObject.GetComponent<ShootManager>() != null)
+            gameObject.GetComponent<ShootManager>().enabled = false;
+        Destroy(gameObject, 1);
     }
 
     public virtual void DropItem()
@@ -78,7 +93,7 @@ public class EnemyPlane : MonoBehaviour {
     {
         health -= damage;
         if (health <= 0)
-            Destroy(gameObject);
+            OnExplode();
     }
 
 }

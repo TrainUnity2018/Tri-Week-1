@@ -88,7 +88,7 @@ Animator:
   m_GameObject: {fileID: 1472087057192494}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c6f34e4075d5004d8bbd81eeed508eb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -110,6 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damage: 1
+  explodeDuration: 1
+  animator: {fileID: 95692020669841422}
 --- !u!212 &212753147209411410
 SpriteRenderer:
   m_ObjectHideFlags: 1

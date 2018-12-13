@@ -8,15 +8,11 @@ public class PlaneBullet : Bullet {
     {
         base.OnCollide(col);
 
-        if (col.gameObject.tag == "EnemyPlane")
+        if (col.gameObject.tag == "EnemyPlane" && !isExploded)
         {
-            Destroy(gameObject);
+            OnExplode();
             col.gameObject.GetComponent<EnemyPlane>().TakeDamage(damage);
         }
-    }
-
-    public override void Rotate()
-    {
         
     }
 }
