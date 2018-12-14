@@ -26,10 +26,14 @@ public class Plane : MonoBehaviour {
     public GameObject MISSILE;
     public Transform firepos;
 
+    private bool isExploded;
+    public Animator animator;
+
     // Use this for initialization
     void Start () {
         currentHealth = initHealth;
         currentArmor = initArmor;
+        isExploded = false;
 	}
 	
 	// Update is called once per frame
@@ -37,7 +41,7 @@ public class Plane : MonoBehaviour {
         InputHandle();
 
         shootingDelayTimer += Time.deltaTime;
-        if (shootingDelayTimer >= shootingDelay && Input.GetKeyDown(KeyCode.C))
+        if (shootingDelayTimer >= shootingDelay && Input.GetKeyDown(KeyCode.C) && !isExploded)
         {
             shootingDelayTimer = 0;
             if (Input.GetKeyDown(KeyCode.C))
@@ -109,7 +113,7 @@ public class Plane : MonoBehaviour {
 
     void InputHandle()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && !isExploded)
         {
             velocityL -= new Vector3((float)speed, 0) * Time.deltaTime;
             if (!hitBorderL)
@@ -133,7 +137,7 @@ public class Plane : MonoBehaviour {
             }
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && !isExploded)
         {
             velocityR += new Vector3((float)speed, 0) * Time.deltaTime;
             if (!hitBorderR)
@@ -157,7 +161,7 @@ public class Plane : MonoBehaviour {
             }
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && !isExploded)
         {
             velocityD -= new Vector3(0, (float)speed) * Time.deltaTime;
             if (!hitBorderD)
@@ -181,7 +185,7 @@ public class Plane : MonoBehaviour {
             }
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && !isExploded)
         {
             velocityU += new Vector3(0, (float)speed) * Time.deltaTime;
             if (!hitBorderU)
@@ -214,7 +218,7 @@ public class Plane : MonoBehaviour {
             currentArmor = 0;
             currentHealth -= damageAfterArmor;
             if (currentHealth <= 0)
-                Destroy(gameObject);
+                OnExplode();
         }
         else
             currentArmor -= damage;
@@ -236,4 +240,15 @@ public class Plane : MonoBehaviour {
     {
         initHealth += health;
     }
+
+    public void OnExplode()
+    {
+        isExploded = true;
+        animator.SetBool("isExploded", isExploded);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        if (gameObject.GetComponent<ShootManager>() != null)
+            gameObject.GetComponent<ShootManager>().enabled = false;
+        Destroy(gameObject, 1);
+    }
+    
 }

@@ -29,4 +29,12 @@ public class PlaneMissile : Bullet {
     {
 
     }
+
+    public override void OnExplode()
+    {
+        isExploded = true;
+        animator.SetBool("isExploded", isExploded);
+        missileCollider.GetComponent<Collider2D>().enabled = false;
+        Destroy(gameObject, 1);
+    }
 }

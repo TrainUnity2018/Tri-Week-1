@@ -15,6 +15,13 @@ public class HealthUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        healthUI.rectTransform.localScale = new Vector3((float)player.GetComponent<Plane>().currentHealth / player.GetComponent<Plane>().initHealth, healthUI.rectTransform.localScale.y);
+        if (player.GetComponent<Plane>().currentHealth > 0)
+        {
+            healthUI.rectTransform.localScale = new Vector3((float)player.GetComponent<Plane>().currentHealth / player.GetComponent<Plane>().initHealth, healthUI.rectTransform.localScale.y);
+        }
+        else
+        {
+            healthUI.rectTransform.localScale = new Vector3(0 / player.GetComponent<Plane>().initHealth, healthUI.rectTransform.localScale.y);
+        }
     }
 }

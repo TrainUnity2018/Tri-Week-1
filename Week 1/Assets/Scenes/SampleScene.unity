@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 1066219534}
   - component: {fileID: 1066219533}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TouchSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,6 +808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1855994886}
   cameraMain: {fileID: 519420031}
+  speed: 1
+  worldPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1066219534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,6 +1322,7 @@ MonoBehaviour:
   hitBorderR: 0
   MISSILE: {fileID: 1872738571125606, guid: 7b77be09317949f44ad72a923748716f, type: 2}
   firepos: {fileID: 97726884}
+  animator: {fileID: 1855994893}
 --- !u!61 &1855994890
 BoxCollider2D:
   m_ObjectHideFlags: 0

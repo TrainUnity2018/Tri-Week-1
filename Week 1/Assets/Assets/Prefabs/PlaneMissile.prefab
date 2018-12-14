@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 212107403399591078}
   - component: {fileID: 50329064835756662}
   - component: {fileID: 114009772377206628}
+  - component: {fileID: 95275308306940768}
   m_Layer: 0
   m_Name: PlaneMissile
   m_TagString: Untagged
@@ -164,6 +165,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33637094, y: 1.1187546}
   m_EdgeRadius: 0
+--- !u!95 &95275308306940768
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872738571125606}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8aa18503c3cc73844bf8a5040f8cffb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114009772377206628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damage: 0
+  animator: {fileID: 95275308306940768}
   rotateSpeed: 8
   missileChase: {fileID: 1788883800684458}
   missileCollider: {fileID: 1532346890012000}
@@ -203,6 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0e1f10c58294b43b7d8fc537ea3984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  damage: 0
+  animator: {fileID: 0}
   missile: {fileID: 1872738571125606}
 --- !u!212 &212107403399591078
 SpriteRenderer:

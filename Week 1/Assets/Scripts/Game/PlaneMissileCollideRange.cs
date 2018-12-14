@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneMissileCollideRange : MonoBehaviour {
+public class PlaneMissileCollideRange : Bullet {
 
     public GameObject missile;
 
-    void OnTriggerEnter2D(Collider2D col)
+    void Update()
     {
-        if (col.gameObject.tag == "EnemyPlane")
+        
+    }
+
+    public override void OnCollide(Collider2D col)
+    {
+        if (col.gameObject.tag == "EnemyPlane" && !isExploded)
         {
-            Destroy(missile.gameObject);
-            Destroy(col.gameObject);
-        }
-        if (col.gameObject.tag == "BorderUp")
-        {
-            Destroy(missile.gameObject);
+            missile.GetComponent<PlaneMissile>().OnExplode();
+            col.gameObject.GetComponent<EnemyPlane>().OnExplode();
         }
     }
 }
